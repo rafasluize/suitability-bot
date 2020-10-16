@@ -10,8 +10,6 @@ interface IProps {
   placeholder?: string
   value?: string | number
   type?: string
-  textError: string | undefined
-  hasError: boolean
   maxLength?: number
   mask?: string
   onChange(e: FormEvent<HTMLTextAreaElement | HTMLInputElement>): void
@@ -22,8 +20,6 @@ const InputText: React.FC<IProps> = ({
   name,
   value,
   onChange,
-  textError,
-  hasError,
   placeholder,
   maxLength,
   type,
@@ -38,7 +34,7 @@ const InputText: React.FC<IProps> = ({
   }
 
   return (
-    <InputStyled error={hasError}>
+    <InputStyled>
       <label htmlFor="name">{label}</label>
       <input
         name={name}
@@ -49,11 +45,6 @@ const InputText: React.FC<IProps> = ({
         maxLength={maxLength}
         placeholder={placeholder}
       />
-      {hasError && (
-        <div className="error">
-          <TextColorStyled color="#F30">{textError}</TextColorStyled>
-        </div>
-      )}
     </InputStyled>
   )
 }
@@ -65,8 +56,6 @@ InputText.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   maxLength: PropTypes.number,
-  textError: PropTypes.string,
-  hasError: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   mask: PropTypes.string
 }
@@ -74,7 +63,6 @@ InputText.propTypes = {
 InputText.defaultProps = {
   label: '',
   maxLength: 50,
-  textError: '',
   placeholder: '',
   type: 'text',
   value: '',

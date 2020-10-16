@@ -26,11 +26,16 @@ export const ButtonStyled = styled.button`
     border-color: ${(props) => props.theme.colors.primary};
     color: #fff;
   }
-  &:hover {
+  &:not(:disabled):hover {
     transform: scale(1.05);
     -webkit-transform: scale(1.05);
   }
   &:focus {
     box-shadow: none !important;
+  }
+  &:disabled {
+    background-color: ${(props) => props.theme.colors.secondary};
+    border-color: ${(props) => props.theme.colors.secondary};
+    cursor: auto;
   }
 `

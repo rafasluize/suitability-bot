@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const HomeStyled = styled.div`
   display: flex;
@@ -12,13 +12,26 @@ export const HomeStyled = styled.div`
       background-color: ${(props) => props.theme.colors.primary};
     }
   }
-  @media (min-width: 992px) {
+  .chat {
+    .response {
+      margin-top: 3rem;
+    }
+  }
+  form {
+    button {
+      margin-top: 2rem;
+    }
+  }
+  @media (min-width: 1200px) {
+    .chat {
+      width: 70%;
+    }
     > div {
       width: 50%;
       padding: ${(props) => props.theme.spacing};
     }
   }
-  @media (max-width: 991.98px) {
+  @media (max-width: 1199.98px) {
     flex-direction: column;
   }
 `
@@ -35,11 +48,25 @@ export const ContentJustifyStyled = styled.div`
   }
 `
 
-export const MessageReceivedStyled = styled.div`
-  background-color: ${(props) => props.theme.colors.primary};
-  padding: ${(props) => props.theme.spacing};
+export const MessageStyled = styled.div<{ type: string }>`
+  ${(props) =>
+    props.type === 'receive' &&
+    css`
+      background-color: ${props.theme.colors.primary};
+      color: #fff;
+    `};
+  ${(props) =>
+    props.type === 'sent' &&
+    css`
+      background-color: #f1f1f1;
+      color: ${props.theme.colors.textGrey};
+      margin-left: auto;
+    `};
+
+  padding: 1.5rem;
   border-radius: 100px;
-  color: #fff;
   margin-bottom: ${(props) => props.theme.spacing};
-  width: 80%;
+  @media (min-width: 768px) {
+    width: 80%;
+  }
 `

@@ -1,7 +1,11 @@
-import { object } from 'prop-types'
-
 export interface IRequest {
   id: string | null
+  answers: object
+  context: string
+}
+
+export interface IResponse {
+  id: string
   answers: object
   messages?: [
     {
@@ -9,5 +13,12 @@ export interface IRequest {
       value: string
     }
   ]
+  inputs?: [
+    {
+      type: string
+      mask: string
+    }
+  ]
+
   context: string
 }

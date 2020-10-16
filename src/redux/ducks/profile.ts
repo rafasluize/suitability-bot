@@ -1,23 +1,23 @@
 import { Dispatch } from 'redux'
 import axios from 'axios'
-import { IRequest } from '../../model/request'
+import { IRequest, IResponse } from '../../model/api'
 
 type FetchProfileAction = {
   type: 'FETCH_PROFILE'
-  request: IRequest
+  response: IResponse
 }
 
-export interface IRequestValues {
-  request?: IRequest
+export interface IResponseValues {
+  response?: IResponse
 }
 
 export const profileReducer = (
-  state: IRequestValues = {},
+  state: IResponseValues = {},
   action: FetchProfileAction
-): IRequestValues => {
+): IResponseValues => {
   switch (action.type) {
     case 'FETCH_PROFILE': {
-      return { ...state, request: action.request }
+      return { ...state, response: action.response }
     }
     default:
       return { ...state }
@@ -30,7 +30,7 @@ export const fetchProfile = (data: IRequest) => (dispatch: Dispatch<FetchProfile
     .then((res) => {
       dispatch({
         type: 'FETCH_PROFILE',
-        request: res.data
+        response: res.data
       })
     })
     .catch((err) => {

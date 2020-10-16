@@ -6,7 +6,8 @@ export default {
     background: '#fff',
     text: '#212122',
     textGrey: '#8b8d99',
-    textDisabled: '#CCC'
+    textDisabled: '#CCC',
+    grey: '#f5f6fa'
   },
   spacing: '1rem'
 }

@@ -1,36 +1,26 @@
 import styled, { css } from 'styled-components'
 
-export const InputStyled = styled.div<{ error: boolean }>`
+export const InputStyled = styled.div`
   margin-bottom: ${(props) => props.theme.spacing};
 
   label {
     display: block;
-    color: ${(props) => props.theme.colors.textDisabled};
-    font-size: 0.93rem;
-    font-weight: 700;
+    font-size: 1rem;
     margin-bottom: ${(props) => props.theme.spacing};
   }
   input {
-    border-radius: 3px;
-    background-color: #fff;
-    border: 1px solid #e7e7e7;
-    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: ${(props) => props.theme.colors.grey};
+    border: 1px solid ${(props) => props.theme.colors.grey};
     padding: ${(props) => props.theme.spacing};
     display: block;
     width: 100%;
     &:focus {
-      border: 1px solid #a43287;
-      box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+      border: 1px solid #222;
     }
     &::placeholder {
       color: #e0e7ee;
     }
-    ${(props) =>
-      props.error &&
-      css`
-        border: 1px solid #f30;
-        box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-      `};
   }
   .error {
     margin-top: 0.5rem;
