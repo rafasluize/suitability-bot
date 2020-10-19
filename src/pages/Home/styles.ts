@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { tint } from 'polished'
 
 export const HomeStyled = styled.div`
   display: flex;
@@ -13,8 +14,22 @@ export const HomeStyled = styled.div`
     }
   }
   .chat {
+    position: relative;
+    .messages {
+      max-height: 700px;
+      overflow-y: auto;
+    }
     .response {
       margin-top: 3rem;
+      .buttons {
+        display: flex;
+        button {
+          width: 50%;
+          &:not(:last-child) {
+            margin-right: 1rem;
+          }
+        }
+      }
     }
   }
   form {
@@ -52,7 +67,7 @@ export const MessageStyled = styled.div<{ type: string }>`
   ${(props) =>
     props.type === 'receive' &&
     css`
-      background-color: ${props.theme.colors.primary};
+      background-color: ${tint(0.25, props.theme.colors.primary)};
       color: #fff;
     `};
   ${(props) =>

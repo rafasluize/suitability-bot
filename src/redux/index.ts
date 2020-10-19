@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { profileReducer } from './ducks/profile'
-import { loadingReducer } from './ducks/loading'
+import { finishReducer } from './ducks/finish'
 
 export const rootReducer = combineReducers({
   profileReducer,
-  loadingReducer
+  finishReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

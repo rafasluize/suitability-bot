@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React, { FormEvent } from 'react'
 import { maskJs } from 'mask-js'
 import { InputStyled } from './styles'
-import { TextColorStyled } from '../../styles/global'
 
 interface IProps {
   name: string
@@ -12,6 +11,7 @@ interface IProps {
   type?: string
   maxLength?: number
   mask?: string
+  autoFocus?: boolean | false
   onChange(e: FormEvent<HTMLTextAreaElement | HTMLInputElement>): void
 }
 
@@ -23,7 +23,8 @@ const InputText: React.FC<IProps> = ({
   placeholder,
   maxLength,
   type,
-  mask
+  mask,
+  autoFocus
 }) => {
   function changeValue(e: FormEvent<HTMLTextAreaElement | HTMLInputElement>): void {
     if (mask) {
@@ -44,6 +45,7 @@ const InputText: React.FC<IProps> = ({
         value={value}
         maxLength={maxLength}
         placeholder={placeholder}
+        autoFocus={autoFocus}
       />
     </InputStyled>
   )
@@ -57,7 +59,8 @@ InputText.propTypes = {
   value: PropTypes.string,
   maxLength: PropTypes.number,
   onChange: PropTypes.func.isRequired,
-  mask: PropTypes.string
+  mask: PropTypes.string,
+  autoFocus: PropTypes.bool
 }
 
 InputText.defaultProps = {
@@ -66,7 +69,8 @@ InputText.defaultProps = {
   placeholder: '',
   type: 'text',
   value: '',
-  mask: ''
+  mask: '',
+  autoFocus: false
 }
 
 export default InputText
